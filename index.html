@@ -1,0 +1,330 @@
+<p>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+<meta content="no" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+</p>
+<!-- <mce:script _mce_src="http://static.ddimg.cn/js/coupon/autoActivity.js"   type="text/javascript"></mce:script> -->
+<style><!--
+body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul {margin: 0;padding: 0}
+body {min-width: 320px;font-family: 'microsoft yahei',Verdana,Arial,Helvetica,sans8-serif;color: #000;-webkit-text-size-adjust: none}
+fieldset,img {border: 0}
+ol,ul {list-style: none}
+address,em {font-style: normal}
+a {color: #000;text-decoration: none}
+table {border-collapse: collapse;}
+.clearfix:after {clear: both;content: " ";display: block;font-size: 0;height: 0;visibility: hidden}
+.clearfix {zoom: 1}
+body{background: #f5f4f4;}
+.bd{width: 100%;min-width: 320px; overflow:hidden;}
+.bd img{display: block;width: 100%;}
+
+
+#top{display: none; right:5px; bottom:8%; position:fixed; width:40px; height:40px; line-height:40px; font-size:14px; background-color:rgba(255,255,255, .5); cursor:pointer; border-radius:20px; text-align: center; border:1px solid #CCC; z-index:99999;}
+
+/*navfix*/
+.floor_nav{background-color: #fff;color:#332;width:100%;box-sizing:border-box;opacity: 0.9;z-index: 999;position:fixed;top: 0;left:0; overflow:hidden;list-style: none;}
+.floor_nav.floor_nav_fixed{display:none;position:fixed;top: 0;left:0;}
+.floor_nav li{display:inline-block;color:#333;font-size: 1rem;line-height: 2rem; height: 2rem; padding-bottom:0.2rem;  width: 23.5%;text-align: center;}
+.floor_nav li:hover{ border-bottom: 2px solid #e5004f; color: #e5004f; box-sizing:border-box; }
+ul.floor_nav h5{padding:0;margin:0;height:2.3rem;line-height:30px;cursor:pointer;background:#333;color: #fff; text-align: right;  float: right; overflow: hidden;width: 50%; padding-right: 5%;}
+#navDiv{  width: 100%; height: 30px;  }
+@media screen and (max-width: 380px) {
+    .floor_nav li {font-size: .9rem;}
+    .floor_more a{font-size: 0.6rem}
+    .floor_list li a:after{font-size: .8rem;}
+    .bd div{ font-size: 1rem; }
+}
+
+@media screen and (min-width: 700px) {
+    .floor_nav li {font-size: 1.5rem;} 
+    .floor_list li a:after{font-size: 1.5rem;}
+    .bd div{ font-size: 1.5rem; }
+}
+.ps{right:5px; bottom:15%; position:fixed; width:26px; padding:5px 0; line-height:15px; font-size:14px; background-color:rgba(255,255,255, .5); cursor:pointer; text-align: center; z-index:99999;}
+.bottom-my{ width: 100%; height: 40px; background: #fff; text-align: center; line-height: 40px; color: #333; position: fixed; bottom: 0; left: 0px; display: block; border-top:1px solid #CCC;}
+.bd{ padding-bottom:3rem;  }
+.bd div{ color: #f60e3f; height: 45px; line-height: 45px; font-weight: 700; text-align: center; }
+.target { position: relative;}
+.placeholder { position: absolute; display:block; width:100px;height:2.3rem; top: -90px;}
+#nowList{ width: 45%;height: 2.3rem;float: left;line-height:30px;cursor:pointer;background:#333;color: #fff;  text-align: left; font-weight: 600;}
+/* 导航开始 */
+
+
+
+/* 导航结束 */
+--></style>
+
+<div id="top">Top</div>
+<div id="navDiv"></div>
+<!-- 导航开始 -->
+
+<section class="main"><section id="menu" style="position: static;">
+<ul class="floor_nav" id="navul"><div id="nowList"></div><h5>收起</h5>
+<li onclick="scroller('floor1',0)">精选</li>
+<li onclick="scroller('floor2',0)">家用电器</li>
+<li onclick="scroller('floor3',0)">3c数码</li>
+<li onclick="scroller('floor4',0)">运动户外</li>
+<li onclick="scroller('floor5',0)">服饰内衣</li>
+<li onclick="scroller('floor6',0)">鞋靴箱包</li>
+<li onclick="scroller('floor7',0)">家居家纺</li>
+</ul>
+</section>
+<script type="text/javascript">
+    var aDiv = document.getElementById("navul");
+    var xDiv = document.getElementById("navDiv");
+    var obd = document.getElementsByClassName("bd")[0];
+        (function ()
+        {
+            var oDiv = aDiv;
+            var oH5 = oDiv.getElementsByTagName("h5")[0];
+            var aP = oDiv.getElementsByTagName("li");
+            var iHeight = oH5.offsetHeight + aP[0].offsetHeight *Math.ceil( aP.length/4);
+            var iLimitH = oH5.offsetHeight;
+            var bShow = false;
+            if (aP.length > 1)
+            { 
+                oH5.innerHTML = "展开↓";
+                oDiv.style.height = iLimitH + "px";
+                xDiv.style.height = iLimitH + "px";
+            }
+            else
+            {  
+                oH5.innerHTML = "收起↑"
+                oDiv.style.height = iHeight + "px";
+                xDiv.style.height = iHeight + "px";
+                
+            }
+            oH5.onclick = function ()
+            {
+                bShow = !bShow;
+                doMove(oDiv, bShow ? iHeight : iLimitH);
+                doMove(xDiv, bShow ? iHeight : iLimitH);
+                oH5.innerHTML = bShow ? "收起↑" : "展开↓";
+            };
+        })()    
+
+               
+  function doMove(obj, iTarget, callback)
+    {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function ()
+        {
+            var iSpeed = (iTarget - obj.offsetHeight) / 5;
+            iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);           
+              iTarget == obj.offsetHeight ? (clearInterval(obj.timer), callback && callback()) : obj.style.height = iSpeed + obj.offsetHeight + "px"
+        }, 30)      
+
+}
+
+body.onscroll = function(){
+              var xcrH = document.body.scrollTop;
+              if(xcrH=xcrH){console.log( iLimitH);
+                oH5.innerHTML = "展开↓";
+                oDiv.style.height = iLimitH + "px";
+                xDiv.style.height = iLimitH + "px";
+                }
+             else{
+                return;
+              }
+              }
+</script>
+
+<!-- 导航结束-->
+<div class="bd">
+<div class="target">精选<span id="floor1" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="贝康馨童装旗舰店"><a href="awardcoupon://id=1466158383840"><img alt="贝康馨童装旗舰店" src="http://img60.ddimg.cn/upload_img/00635/123/app0531.jpg" /></a></li>
+<li dd_name="手机配件"><a href="awardcoupon://id=1466142671602"><img alt="手机配件" src="http://img60.ddimg.cn/upload_img/00265/456/app-30.jpg" /></a></li>
+<li dd_name="平台家居"><a href="awardcoupon://id=1466133231341"><img alt="平台家居" src="http://img60.ddimg.cn/upload_img/00443/vip12/wx-zq20.png" /></a></li>
+<li dd_name="平台家居"><a href="awardcoupon://id=1466133330837"><img alt="平台家居" src="http://img60.ddimg.cn/upload_img/00443/vip12/wx-zq100.png" /></a></li>
+<li dd_name="水星家纺官方旗舰店"><a href="awardcoupon://id=1466143804979"><img alt="水星家纺官方旗舰店" src="http://img57.ddimg.cn/64000017626177_y.png" /></a></li>
+<li dd_name="办公综合"><a href="awardcoupon://id=1466142597137"><img alt="办公综合" src="http://img60.ddimg.cn/upload_img/00359/ly/app6.jpg" /></a></li>
+<li dd_name="惠人原汁机官方旗舰店"><a href="awardcoupon://id=1466143331151"><img alt="惠人原汁机官方旗舰店" src="http://img62.ddimg.cn/upload_img/00516/1/10978-WX-100A-6.16.jpg" /></a></li>
+<li dd_name="数码"><a href="awardcoupon://id=1466142528824"><img alt="数码" src="http://img62.ddimg.cn/upload_img/00359/ly3/30-620-app1.jpg" /></a></li>
+</ul>
+<div class="target">家用电器<span id="floor2" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="惠人原汁机官方旗舰店"><a href="awardcoupon://id=1466143331151"><img alt="惠人原汁机官方旗舰店" src="http://img62.ddimg.cn/upload_img/00516/1/10978-WX-100A-6.16.jpg" /></a></li>
+<li dd_name="美的生活电器官方旗舰店"><a href="awardcoupon://id=1466143175022"><img alt="美的生活电器官方旗舰店" src="http://img60.ddimg.cn/upload_img/00516/1/9509-WX-50A-6.16.jpg" /></a></li>
+<li dd_name="小狗电器旗舰店"><a href="awardcoupon://id=1466133425980"><img alt="小狗电器旗舰店" src="http://img58.ddimg.cn/87020015259698_y.jpg" /></a></li>
+<li dd_name="小熊电器官方旗舰店"><a href="awardcoupon://id=1466133510652"><img alt="小熊电器官方旗舰店" src="http://img50.ddimg.cn/121110012767950_y.jpg" /></a></li>
+<li dd_name="TEK官方旗舰店"><a href="awardcoupon://id=1466143244430"><img alt="TEK官方旗舰店" src="http://img62.ddimg.cn/upload_img/00580/1/14183-WX-6.17.jpg" /></a></li>
+<li dd_name="安之星湖畔专卖店"><a href="awardcoupon://id=1466143404118"><img alt="安之星湖畔专卖店" src="http://img56.ddimg.cn/137490017932596_y.jpg" /></a></li>
+<li dd_name="九阳相知电器专营店"><a href="awardcoupon://id=1466143466955"><img alt="九阳相知电器专营店" src="http://img60.ddimg.cn/upload_img/00516/1/9164-wx-50a-6.16.jpg" /></a></li>
+<li dd_name="华海日顺专营店"><a href="awardcoupon://id=1466133789657"><img alt="华海日顺专营店" src="http://img55.ddimg.cn/180640016365605_y.jpg" /></a></li>
+<li dd_name="苏泊尔官方旗舰店"><a href="awardcoupon://id=1466133893856"><img alt="苏泊尔官方旗舰店" src="http://img62.ddimg.cn/upload_img/00516/1/17991-WX-50A-6.16.jpg" /></a></li>
+<li dd_name="安吉尔官方旗舰店"><a href="awardcoupon://id=1466133974030"><img alt="安吉尔官方旗舰店" src="http://img63.ddimg.cn/upload_img/00580/1/14056-WX-6.17.jpg" /></a></li>
+<li dd_name="天际旗舰店"><a href="awardcoupon://id=1466134062172"><img alt="天际旗舰店" src="http://img63.ddimg.cn/upload_img/00516/1/11015-WX-50A-6,16.jpg" /></a></li>
+<li dd_name="美辰电器专营店"><a href="awardcoupon://id=1466134147479"><img alt="美辰电器专营店" src="http://img63.ddimg.cn/upload_img/00580/1/14344-WX-6.17.jpg" /></a></li>
+<li dd_name="开辰韩国进口电器专营店"><a href="awardcoupon://id=1466143531099"><img alt="开辰韩国进口电器专营店" src="http://img61.ddimg.cn/upload_img/00580/1/17069-WX-6.17.jpg" /></a></li>
+<li dd_name="志高家电官方旗舰店"><a href="awardcoupon://id=1466133616440"><img alt="志高家电官方旗舰店" src="http://img60.ddimg.cn/upload_img/00580/1/17667Q-WX-6.16.jpg" /></a></li>
+</ul>
+<div class="target">3c数码 <span id="floor3" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="办公综合"><a href="awardcoupon://id=1466142597137"><img alt="办公综合" src="http://img60.ddimg.cn/upload_img/00359/ly/app6.jpg" /></a></li>
+<li dd_name="手机配件"><a href="awardcoupon://id=1466142671602"><img alt="手机配件" src="http://img60.ddimg.cn/upload_img/00265/456/app-30.jpg" /></a></li>
+<li dd_name="数码"><a href="awardcoupon://id=1466142528824"><img alt="数码" src="http://img62.ddimg.cn/upload_img/00359/ly3/30-620-app1.jpg" /></a></li>
+<li dd_name="苹果Apple专营店"><a href="awardcoupon://id=1466142762799"><img alt="苹果Apple专营店" src="http://img61.ddimg.cn/upload_img/00628/images/3898-app.jpg" /></a></li>
+<li dd_name="南京宗发数码专营店"><a href="awardcoupon://id=1466143082854"><img alt="南京宗发数码专营店" src="http://img63.ddimg.cn/upload_img/00359/zx1/zf-app.jpg" /></a></li>
+<li dd_name="ThinkPad官方旗舰店"><a href="awardcoupon://id=1466142964058"><img alt="ThinkPad官方旗舰店" src="http://img62.ddimg.cn/upload_img/00359/zx1/thinkpad-app.jpg" /></a></li>
+<li dd_name="信诚易购电脑数码专营店"><a href="awardcoupon://id=1466143023818"><img alt="信诚易购电脑数码专营店" src="http://img61.ddimg.cn/upload_img/00359/zx1/dai-app.jpg" /></a></li>
+</ul>
+<div class="target">运动户外<span id="floor4" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="PELLIOT户外旗舰店"><a href="awardcoupon://id=1466404099733"><img alt="PELLIOT户外旗舰店" src="http://img54.ddimg.cn/129090017948554_y.jpg" /></a></li>
+<li dd_name="匹克官方旗舰店"><a href="awardcoupon://id=1466404053050"><img alt="匹克官方旗舰店" src="http://img55.ddimg.cn/37090017948175_y.jpg" /></a></li>
+<li dd_name="俊林运动专营店"><a href="awardcoupon://id=1466404211016"><img alt="俊林运动专营店" src="http://img56.ddimg.cn/78510012819906_y.png" /></a></li>
+<li dd_name="欧洲先生旗舰店"><a href="awardcoupon://id=1466404546536"><img alt="欧洲先生旗舰店" src="http://img60.ddimg.cn/upload_img/00451/wenjian1/160621-17310-WXLQ.jpg" /></a></li>
+</ul>
+<div class="target">服饰内衣<span id="floor5" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="贝康馨童装旗舰店"><a href="awardcoupon://id=1466158383840"><img alt="贝康馨童装旗舰店" src="http://img60.ddimg.cn/upload_img/00635/123/app0531.jpg" /></a></li>
+<li dd_name="CITYSAILOR"><a href="awardcoupon://id=1465787586987"><img alt="CITYSAILOR" src="http://img59.ddimg.cn/114910012686239_y.jpg" /></a></li>
+<li dd_name="白领公社"><a href="awardcoupon://id=1466404769389"><img alt="白领公社" src="http://img52.ddimg.cn/95940016389562_y.jpg" /></a></li>
+<li dd_name="卡帝乐鳄鱼服饰旗舰店"><a href="awardcoupon://id=1466406088544"><img alt="卡帝乐鳄鱼服饰旗舰店" src="http://img54.ddimg.cn/179350013933804_y.jpg" /></a></li>
+<li dd_name="斯比克斯"><a href="awardcoupon://id=1466406255462"><img alt="斯比克斯" src="http://img58.ddimg.cn/70360015211068_y.jpg" /></a></li>
+<li dd_name="梵如官方旗舰店"><a href="awardcoupon://id=1466405132840"><img alt="梵如官方旗舰店" src="http://img54.ddimg.cn/165850013932504_y.jpg" /></a></li>
+<li dd_name="梵如官方旗舰店"><a href="awardcoupon://id=1466405324295"><img alt="梵如官方旗舰店" src="http://img55.ddimg.cn/165850013932505_y.jpg" /></a></li>
+<li dd_name="曼旋官方旗舰店"><a href="awardcoupon://id=1466405381816"><img alt="曼旋官方旗舰店" src="http://img50.ddimg.cn/165830024299400_y.jpg" /></a></li>
+<li dd_name="曼旋官方旗舰店"><a href="awardcoupon://id=1466405819678"><img alt="曼旋官方旗舰店" src="http://img51.ddimg.cn/165830024299401_y.jpg" /></a></li>
+<li dd_name="馨雅丽内衣旗舰店"><a href="awardcoupon://id=1465966783738"><img alt="馨雅丽内衣旗舰店" src="http://img58.ddimg.cn/94510012713648_y.jpg" /></a></li>
+<li dd_name="馨雅丽内衣旗舰店"><a href="awardcoupon://id=1465966825413"><img alt="馨雅丽内衣旗舰店" src="http://img57.ddimg.cn/94510012713647_y.jpg" /></a></li>
+</ul>
+<div class="target">鞋靴箱包<span id="floor6" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="USO箱包旗舰店"><a href="awardcoupon://id=1465967447791"><img alt="USO箱包旗舰店" src="http://img59.ddimg.cn/97040016178149_y.jpg" /></a></li>
+<li dd_name="文衣社达芙妮专营店"><a href="awardcoupon://id=1466403853325"><img alt="文衣社达芙妮专营店" src="http://img54.ddimg.cn/182870020450934_y.jpg" /></a></li>
+<li dd_name="AUREUS鞋类旗舰店"><a href="awardcoupon://id=1466403710149"><img alt="AUREUS鞋类旗舰店" src="http://img59.ddimg.cn/173440016390419_y.jpg" /></a></li>
+<li dd_name="欣清老北京布鞋旗舰店"><a href="awardcoupon://id=1466403759320"><img alt="欣清老北京布鞋旗舰店" src="http://img51.ddimg.cn/91770020450461_y.jpg" /></a></li>
+<li dd_name="狄亚图旗舰店"><a href="awardcoupon://id=1466403812557"><img alt="狄亚图旗舰店" src="http://img51.ddimg.cn/178750014071861_y.jpg" /></a></li>
+<li dd_name="OSDY箱包官方旗舰店"><a href="awardcoupon://id=1465786560676"><img alt="OSDY箱包官方旗舰店" src="http://img54.ddimg.cn/62460014735024_y.jpg" /></a></li>
+</ul>
+<div class="target">家居家纺<span id="floor7" class="placeholder">&nbsp;</span>
+</div>
+<ul>
+<li dd_name="平台家居"><a href="awardcoupon://id=1466133330837"><img alt="平台家居" src="http://img60.ddimg.cn/upload_img/00443/vip12/wx-zq100.png" /></a></li>
+<li dd_name="平台家居"><a href="awardcoupon://id=1466133231341"><img alt="平台家居" src="http://img60.ddimg.cn/upload_img/00443/vip12/wx-zq20.png" /></a></li>
+<li dd_name="水星家纺官方旗舰店"><a href="awardcoupon://id=1466143804979"><img alt="水星家纺官方旗舰店" src="http://img57.ddimg.cn/64000017626177_y.png" /></a></li>
+<li dd_name="罗莱家纺官方旗舰店"><a href="awardcoupon://id=1466143679778"><img alt="罗莱家纺官方旗舰店" src="http://img59.ddimg.cn/64000017629049_y.png" /></a></li>
+<li dd_name="优雅100品质家居专营店"><a href="awardcoupon://id=1466142837168"><img alt="优雅100品质家居专营店" src="http://img51.ddimg.cn/64000017622831_y.jpg" /></a></li>
+<li dd_name="富安娜官方旗舰店"><a href="awardcoupon://id=1466143739526"><img alt="富安娜官方旗舰店" src="http://img57.ddimg.cn/64000017622827_y.jpg" /></a></li>
+<li dd_name="Z9家纺旗舰店"><a href="awardcoupon://id=1466143602368"><img alt="Z9家纺旗舰店" src="http://img53.ddimg.cn/144630024275093_y.jpg" /></a></li>
+</ul>
+<p>
+<a href="coupon://mcms.dangdang.com" dd_name="查看我的礼券" class="bottom-my">查看我的礼券</a></p>
+</div>
+<script type="text/javascript">// <![CDATA[
+window.onscroll = function(){
+
+var oTop = document.getElementById('top');
+var scrH = document.documentElement.scrollTop || document.body.scrollTop;
+oTop.onclick = function(){
+        document.documentElement.scrollTop = document.body.scrollTop = 0;
+        oTop.style.display = 'none';
+    }
+    if (scrH > 100) {
+        oTop.style.display = 'block';
+    }else{ oTop.style.display = 'none';}}
+// ]]></script>
+<!-- 锚标记 -->
+<script language="javascript">// <![CDATA[
+    // 说明 ：用 Javascript 实现锚点(Anchor)间平滑跳转
+    // 转换为数字
+    function intval(v)
+    {   
+     v = parseInt(v);   
+     return isNaN(v) ? 0 : v;
+    }
+    // 获取元素信息
+    function getPos(e)
+    {   
+     var l = 0;   
+     var t  = 0;   
+     var w = intval(e.style.width);   
+     var h = intval(e.style.height);   
+     var wb = e.offsetWidth;   
+     var hb = e.offsetHeight;   
+     while (e.offsetParent)
+     {      
+      l += e.offsetLeft + (e.currentStyle?intval(e.currentStyle.borderLeftWidth):0);       
+      t += e.offsetTop  + (e.currentStyle?intval(e.currentStyle.borderTopWidth):0);       
+      e = e.offsetParent;   
+      }   
+      l += e.offsetLeft + (e.currentStyle?intval(e.currentStyle.borderLeftWidth):0);   
+      t += e.offsetTop  + (e.currentStyle?intval(e.currentStyle.borderTopWidth):0);   
+      return {x:l, y:t, w:w, h:h, wb:wb, hb:hb};
+     }
+     // 获取滚动条信息
+     function getScroll()
+     {   
+      var t, l, w, h;        
+      if (document.documentElement && document.documentElement.scrollTop)
+      {       
+      t = document.documentElement.scrollTop;       
+      l = document.documentElement.scrollLeft;       
+      w = document.documentElement.scrollWidth;      
+      h = document.documentElement.scrollHeight;   
+      }
+      else if (document.body)
+      {       
+      t = document.body.scrollTop;       
+      l = document.body.scrollLeft;       
+      w = document.body.scrollWidth;       
+      h = document.body.scrollHeight;   
+      }   
+      return { t: t, l: l, w: w, h: h };
+     }
+     // 锚点(Anchor)间平滑跳转
+     function scroller(el, duration)
+     {   
+       if(typeof el != 'object')
+       {
+         el = document.getElementById(el);
+       }    
+       if(!el) return;    
+       var z = this;   
+       z.el = el;   
+       z.p = getPos(el);   
+       z.s = getScroll();   
+       z.clear = function()
+       {
+         window.clearInterval(z.timer);z.timer=null
+       };   
+       z.t=(new Date).getTime();    
+       z.step = function()
+      {       
+        var t = (new Date).getTime();       
+        var p = (t - z.t) / duration;       
+        if (t >= duration + z.t)
+        {           
+          z.clear();           
+          window.setTimeout(function(){z.scroll(z.p.y, z.p.x)},0);        
+        }
+        else {           
+          st = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.y-z.s.t) + z.s.t;           
+          sl = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.x-z.s.l) + z.s.l;           
+          z.scroll(st, sl);       
+        }   
+       };   
+       z.scroll = function (t, l){window.scrollTo(l, t)};   
+       z.timer = window.setInterval(function(){z.step();},0);
+       console.log(t);
+       console.log(z.timer);
+     }
+/*  var obj_lis = document.getElementById("navul").getElementsByTagName("li");
+  var nowList = document.getElementById("nowList");
+  for(i=0;i<obj_lis.length;i++){
+    obj_lis[i].onclick = function(){
+      nowList.innerHTML=this.innerHTML;
+    }
+  }*/
+
+// ]]></script>
+</section></p>
